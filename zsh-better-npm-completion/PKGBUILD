@@ -1,0 +1,25 @@
+# Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
+pkgname=zsh-better-npm-completion-git
+pkgver=r62.0a7cf04
+pkgrel=1
+pkgdesc="Better npm completion for zsh"
+arch=(any)
+url="https://github.com/lukechilds/zsh-better-npm-completion"
+license=('MIT')
+depends=(zsh)
+makedepends=(git)
+provides=(${pkgname/-git/})
+conflicts=(${pkgname/-git/})
+source=("${pkgname}::git+https://github.com/lukechilds/zsh-better-npm-completion")
+sha256sums=(SKIP)
+install=usage.install
+
+pkgver() {
+    cd "${pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+    cd "${pkgname}"
+    install -Dm644 zsh-better-npm-completion.plugin.zsh -t "${pkgdir}/usr/share/${pkgname/-git/}"
+}

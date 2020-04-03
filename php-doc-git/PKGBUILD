@@ -1,0 +1,28 @@
+# Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
+pkgname=php-doc-git
+pkgver=r25706.cd10685d87
+pkgrel=1
+pkgdesc="Documention for PHP programming language"
+arch=(any)
+url="https://github.com/php/doc-en"
+license=('CCPL')
+options=('!strip')
+makedepends=(php php-phd)
+source=("en::git+https://github.com/php/doc-en.git"
+        "doc-base::git+https://github.com/salathe/phpdoc-base.git")
+sha256sums=(SKIP SKIP)
+
+pkgver() {
+    cd "en"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+    php doc-base/configure.php --enable-xml-details --disable-libxml-check --redirect-stderr-to-stdout --with-lang=en
+    phd -d doc-base/.manual.xml
+}
+
+package() {
+    mkdir -p "${pkgdir}/usr/share/doc/php"
+    cp -r output/chunked-xhtml/* "${pkgdir}/usr/share/doc/php"
+}

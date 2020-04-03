@@ -1,0 +1,17 @@
+pkgbase = zsh-better-npm-completion-git
+	pkgdesc = Better npm completion for zsh
+	pkgver = r62.0a7cf04
+	pkgrel = 1
+	url = https://github.com/lukechilds/zsh-better-npm-completion
+	install = usage.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = zsh
+	provides = zsh-better-npm-completion
+	conflicts = zsh-better-npm-completion
+	source = zsh-better-npm-completion-git::git+https://github.com/lukechilds/zsh-better-npm-completion
+	sha256sums = SKIP
+
+pkgname = zsh-better-npm-completion-git
+

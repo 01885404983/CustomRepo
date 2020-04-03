@@ -1,0 +1,28 @@
+pkgbase = goldendict-chau-git
+	pkgdesc = Feature-rich dictionary lookup program
+	pkgver = r2445.8d54db7
+	pkgrel = 1
+	url = http://goldendict.org
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = libvorbis
+	depends = libogg
+	depends = hunspell
+	depends = libxtst
+	depends = libzip
+	depends = libao
+	depends = qt5-webkit
+	depends = qt5-svg
+	depends = qt5-x11extras
+	depends = qt5-tools
+	depends = phonon-qt5
+	depends = ffmpeg
+	provides = stardict
+	provides = goldendict
+	conflicts = goldendict
+	source = goldendict-chau-git::git+https://github.com/duongdominhchau/goldendict.git
+	sha256sums = SKIP
+
+pkgname = goldendict-chau-git
+

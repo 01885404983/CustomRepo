@@ -1,0 +1,16 @@
+pkgbase = gitea-docs-git
+	pkgdesc = Documentation for Gitea
+	pkgver = r9246.f685edf51
+	pkgrel = 1
+	url = https://github.com/go-gitea/gitea
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = hugo
+	provides = gitea-docs
+	conflicts = gitea-docs
+	source = gitea-docs-git::git+https://github.com/go-gitea/gitea.git
+	sha256sums = SKIP
+
+pkgname = gitea-docs-git
+

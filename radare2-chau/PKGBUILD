@@ -1,0 +1,29 @@
+# Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
+pkgname=radare2-chau
+pkgver=4.3.1
+pkgrel=1
+pkgdesc="UNIX-like reverse engineering framework and command-line toolset"
+arch=(x86_64)
+url="https://github.com/radareorg/radare2"
+license=('GPL')
+depends=(capstone openssl xxhash libzip zlib)
+makedepends=()
+provides=(radare2)
+conflicts=(radare2)
+source=("https://github.com/radareorg/radare2/archive/${pkgver}.tar.gz")
+sha256sums=(SKIP)
+
+build() {
+	cd "radare2-$pkgver"
+	./configure --prefix=/usr \
+		--with-syscapstone \
+		--with-syszip \
+		--with-sysxxhash \
+		--with-openssl
+	make
+}
+
+package() {
+	cd "radare2-$pkgver"
+	make DESTDIR="$pkgdir/" install
+}

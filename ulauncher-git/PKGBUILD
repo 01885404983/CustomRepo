@@ -1,0 +1,36 @@
+# Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
+pkgname=ulauncher-git
+pkgver=r690.b2c42ad
+pkgrel=1
+pkgdesc="Application launcher for Linux"
+arch=(x86_64)
+url=""
+license=('GPL')
+depends=(libappindicator-gtk3 libkeybinder3 gobject-introspection-runtime
+    webkit2gtk python-dbus python-pyinotify python-cairo python-xdg
+    python-levenshtein python-gobject)
+makedepends=(git python-distutils-extra yarn python-setuptools)
+provides=(${pkgname/-git/})
+conflicts=(${pkgname/-git/})
+source=("${pkgname}::git+https://github.com/Ulauncher/Ulauncher.git")
+sha256sums=(SKIP)
+
+pkgver() {
+    cd "${pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cd "${pkgname}"
+    python setup.py build
+    ./ul build-preferences
+}
+
+package() {
+    cd "${pkgname}"
+    install -Dm644 build/share/applications/ulauncher.desktop \
+        "${pkgdir}/usr/share/applications/ulauncher.desktop"
+    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    rm -rf "${pkgdir}/usr/share/ulauncher/preferences/"{no*,src,bow*,gul*,pack*}
+    find "${pkgdir}" -type d -name __pycache__ | xargs rm -rf
+}

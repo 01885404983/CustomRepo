@@ -1,0 +1,18 @@
+pkgbase = php-phd
+	pkgdesc = PhD - PHP DocBook
+	pkgver = 1.1.11
+	pkgrel = 1
+	url = https://github.com/php/phd
+	arch = any
+	license = MIT
+	depends = php
+	depends = php-sqlite
+	source = https://github.com/php/phd/archive/RELEASE_1_1_11.tar.gz
+	source = phd.sh
+	source = phd.ini
+	sha256sums = e747d5853a00844fe65846f7a0d6dab8e1d2ba525218e6e463be39f9441a869a
+	sha256sums = 443a2f090d7a0ccba84fb1a7a391d040faf678b051bcf75bc01b69fa30ff06f2
+	sha256sums = 068dc89419ee06775096973fe2605ee2ad2de0f1920a64b3454325b73b634c18
+
+pkgname = php-phd
+

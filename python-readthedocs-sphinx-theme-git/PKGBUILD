@@ -1,0 +1,27 @@
+# Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
+pkgname=python-readthedocs-sphinx-theme-git
+pkgver=r1082.e873694
+pkgrel=1
+pkgdesc="Sphinx theme for readthedocs.org"
+arch=(any)
+url="https://github.com/readthedocs/sphinx_rtd_theme"
+license=('GPL')
+depends=(python-sphinx)
+makedepends=(git)
+conflict=(python-readthedocs-sphinx-theme)
+provides=(python-readthedocs-sphinx-theme)
+source=("${pkgname}::git+https://github.com/readthedocs/sphinx_rtd_theme")
+sha256sums=(SKIP)
+
+pkgver() {
+    cd "${pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+
+package() {
+    cd "${pkgname}"
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
+    python setup.py install --root="${pkgdir}" --prefix=/usr --optimize=1
+}

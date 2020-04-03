@@ -1,0 +1,25 @@
+# Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
+pkgname=phalcon-devtools
+pkgver=4.0.1
+pkgrel=1
+pkgdesc="Useful scripts to generate code helping to develop faster and easy applications that use with Phalcon framework."
+arch=('x86_64')
+license=('BSD')
+url="https://github.com/phalcon/phalcon-devtools"
+depends=('php' 'php-phalcon>=4')
+provides=('phalcon-devtools')
+source=("https://github.com/phalcon/phalcon-devtools/archive/v${pkgver}.tar.gz")
+sha256sums=('69247aa10f202f372c4be18acd8f9f1aef9478f2038c450de3d93b31f13338a1')
+
+build() {
+    cd "$pkgname-$pkgver"
+    composer install
+}
+
+package() {
+    cd "$pkgname-$pkgver"
+    mkdir -p "${pkgdir}/opt/${pkgname}"
+    cp -r * "${pkgdir}/opt/${pkgname}"
+    mkdir -p "${pkgdir}/usr/bin"
+    ln -s "/opt/${pkgname}/phalcon" "${pkgdir}/usr/bin"
+}

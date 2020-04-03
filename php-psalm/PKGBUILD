@@ -1,0 +1,14 @@
+pkgname=php-psalm
+pkgver=3.10.1
+pkgrel=1
+pkgdesc="A static analysis tool for finding errors in PHP applications"
+url="https://github.com/vimeo/psalm"
+arch=('any')
+license=('MIT')
+depends=('php')
+source=("https://github.com/vimeo/psalm/releases/download/${pkgver}/psalm.phar")
+sha256sums=(SKIP)
+
+package() {
+    install -Dm 755 psalm.phar "${pkgdir}/usr/bin/psalm"
+}

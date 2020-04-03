@@ -1,0 +1,16 @@
+pkgbase = organteq-demo
+	pkgdesc = Organteq: physically modelled pipe organs
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.modartt.com
+	arch = any
+	license = custom
+	source = Organteq 1.zip
+	source = organteq.png
+	source = organteq.desktop
+	sha256sums = 856953787c419fe5aff9dd27c2745868f8b06ad5507086b885dc95a5e523337a
+	sha256sums = 92bdc26a970a9681fba43f3c26f272d412910a0697b469946830152fa2eee54b
+	sha256sums = 6e2fc747495a124ac9796a5da657a8b7173d5abec0db8de44b9d0f1edf397649
+
+pkgname = organteq-demo
+

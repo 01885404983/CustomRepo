@@ -1,0 +1,42 @@
+# Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
+pkgname=('doctest' 'doctest-doc')
+pkgbase=doctest
+pkgver=2.3.7
+pkgrel=1
+pkgdesc="The fastest feature-rich C++11/14/17/20 single-header testing framework for unit tests and TDD"
+arch=('x86_64')
+url="https://github.com/onqtam/doctest"
+license=('MIT')
+makedepends=(cmake)
+source=("https://github.com/onqtam/doctest/archive/${pkgver}.tar.gz")
+sha256sums=(SKIP)
+
+build() {
+	cd "$pkgbase-$pkgver"
+	cmake \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DDOCTEST_WITH_TESTS=Off \
+		.
+	make
+}
+
+package_doctest() {
+	cd "doctest-$pkgver"
+	make DESTDIR="$pkgdir/" install
+}
+
+package_doctest-doc() {
+	arch=(any)
+	pkgdesc="Documentation of doctest C++ testing framework"
+
+	cd "doctest-$pkgver"
+	mkdir -p "${pkgdir}/usr/share/doc"
+	cp -r doc/html_generated "${pkgdir}/usr/share/doc/doctest"
+	cp -r scripts/data "${pkgdir}/usr/share/doc/doctest/data"
+	for f in "${pkgdir}/usr/share/doc/doctest"/*.html
+	do
+		sed -i 's/..\/..\/scripts\/data/data/g' "$f"
+	done
+}

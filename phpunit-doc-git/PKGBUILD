@@ -1,0 +1,27 @@
+# Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
+pkgname=phpunit-doc-git
+pkgver=r2211.aa08446a
+pkgrel=1
+pkgdesc="Documentation for PHPUnit"
+arch=(any)
+url="https://phpunit.readthedocs.io"
+license=('CCPL')
+makedepends=(python-sphinx python-readthedocs-sphinx-theme make)
+options=('!strip')
+source=("${pkgname}::git+https://github.com/sebastianbergmann/phpunit-documentation-english")
+sha256sums=(SKIP)
+
+pkgver() {
+    cd "${pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cd "${pkgname}"
+    make html
+}
+package() {
+    cd "${pkgname}"
+	mkdir -p "${pkgdir}/usr/share/doc/phpunit"
+	cp -r build/html/* "${pkgdir}/usr/share/doc/phpunit"
+}

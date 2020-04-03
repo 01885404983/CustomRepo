@@ -1,0 +1,2 @@
+- Use local server instead.
+- Consider adding a domain name (e.g: docs.localhost) dedicated to viewing docs.

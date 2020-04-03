@@ -1,0 +1,26 @@
+pkgbase = dolphin-chau-git
+	pkgdesc = Dolphin - The KDE file manager
+	pkgver = r6060.d3a6ed1e5
+	pkgrel = 1
+	url = https://github.com/duongdominhchau/dolphin
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	depends = knewstuff
+	depends = kcmutils
+	depends = kparts
+	depends = kinit
+	depends = kio-extras
+	depends = phonon-qt5
+	optdepends = kde-cli-tools: for editing file type options
+	optdepends = ffmpegthumbs: video thumbnails
+	optdepends = kdegraphics-thumbnailers: PDF and PS thumbnails
+	optdepends = konsole: terminal panel
+	optdepends = purpose: share context menu
+	conflicts = dolphin
+	source = dolphin-chau-git::git+https://github.com/duongdominhchau/dolphin.git
+	sha256sums = SKIP
+
+pkgname = dolphin-chau-git
+

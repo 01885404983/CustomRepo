@@ -1,0 +1,37 @@
+# Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
+pkgname=conky-chau-git
+pkgver=r3516.b2a5a47a
+pkgrel=1
+pkgdesc='Lightweight system monitor for X'
+url='https://github.com/brndnmtthws/conky'
+license=('BSD' 'GPL')
+arch=('x86_64')
+conflicts=(conky conky-chau)
+makedepends=('cmake' 'man-db' 'git')
+depends=('glib2' 'lua' 'wireless_tools' 'libxft' 'libxnvctrl')
+source=("${pkgname}::git+https://github.com/brndnmtthws/conky.git")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "${pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cd "${pkgname}"
+    cmake \
+        -D CMAKE_INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE=Release -D MAINTAINER_MODE=OFF \
+        -D BUILD_DOCS=OFF -D BUILD_TESTS=OFF \
+        -D BUILD_MPD=OFF -D BUILD_MOC=OFF -D BUILD_XMMS2=OFF -D BUILD_CMUS=OFF \
+        -D BUILD_WLAN=ON -D BUILD_NVIDIA=ON \
+        .
+    make
+}
+
+package() {
+    cd "${pkgname}"
+    make DESTDIR="${pkgdir}" install
+    install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 extras/vim/syntax/conkyrc.vim "${pkgdir}"/usr/share/vim/vimfiles/syntax/conkyrc.vim
+    install -Dm644 extras/vim/ftdetect/conkyrc.vim "${pkgdir}"/usr/share/vim/vimfiles/ftdetect/conkyrc.vim
+}

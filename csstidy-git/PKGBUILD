@@ -1,0 +1,27 @@
+# Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
+pkgname=csstidy-git
+pkgver=r36.8fbef82
+pkgrel=1
+pkgdesc="CSSTidy is an open source CSS parser and optimizer"
+arch=(x86_64)
+url="https://github.com/csstidy-c/csstidy"
+license=('LGPL')
+makedepends=('git')
+source=("${pkgname}::git+https://github.com/csstidy-c/csstidy")
+sha256sums=('SKIP')
+
+pkgver() {
+	cd "${pkgname}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+	cd "${pkgname}"
+	make
+}
+
+package() {
+	cd "${pkgname}"
+	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/csstidy/LICENSE"
+	make DESTDIR="${pkgdir}" install
+}

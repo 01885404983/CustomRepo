@@ -1,0 +1,17 @@
+pkgbase = php-doc-git
+	pkgdesc = Documention for PHP programming language
+	pkgver = r25706.cd10685d87
+	pkgrel = 1
+	url = https://github.com/php/doc-en
+	arch = any
+	license = CCPL
+	makedepends = php
+	makedepends = php-phd
+	options = !strip
+	source = en::git+https://github.com/php/doc-en.git
+	source = doc-base::git+https://github.com/salathe/phpdoc-base.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = php-doc-git
+

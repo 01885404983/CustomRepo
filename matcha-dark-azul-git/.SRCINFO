@@ -1,0 +1,15 @@
+pkgbase = matcha-dark-azul-git
+	pkgdesc = Matcha flat design theme for GTK
+	pkgver = r272.92974ac
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Matcha-gtk-theme
+	arch = any
+	license = GPL
+	depends = gtk-engine-murrine
+	depends = gtk-engines
+	options = !strip
+	source = matcha-dark-azul-git::git+https://github.com/vinceliuice/Matcha-gtk-theme.git
+	sha256sums = SKIP
+
+pkgname = matcha-dark-azul-git
+

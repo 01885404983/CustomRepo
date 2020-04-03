@@ -1,0 +1,39 @@
+# Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
+pkgname=dolphin-chau-git
+pkgver=r6060.d3a6ed1e5
+pkgrel=1
+pkgdesc="Dolphin - The KDE file manager"
+arch=(x86_64)
+url="https://github.com/duongdominhchau/dolphin"
+license=(LGPL)
+depends=(knewstuff kcmutils kparts kinit kio-extras phonon-qt5)
+makedepends=(extra-cmake-modules kdoctools)
+optdepends=('kde-cli-tools: for editing file type options'
+			'ffmpegthumbs: video thumbnails'
+			'kdegraphics-thumbnailers: PDF and PS thumbnails'
+            'konsole: terminal panel'
+            'purpose: share context menu')
+conflicts=(dolphin)
+source=("${pkgname}::git+https://github.com/duongdominhchau/dolphin.git")
+sha256sums=(SKIP)
+
+pkgver() {
+	cd "${pkgname}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+	cd "${pkgname}"
+	cmake \
+		-DBUILD_TESTING=Off \
+		-DKF5Activities_FOUND=False \
+		-DKF5Baloo_FOUND=False \
+		-DKF5BalooWidgets_FOUND=False \
+		.
+	make
+}
+
+package() {
+	cd "${pkgname}"
+	make DESTDIR="${pkgdir}" install
+}

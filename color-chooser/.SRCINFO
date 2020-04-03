@@ -1,0 +1,17 @@
+pkgbase = color-chooser-git
+	pkgdesc = A simple HSL color chooser
+	pkgver = r1.2cdc63f
+	pkgrel = 1
+	url = https://github.com/duongdominhchau/color-chooser
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	provides = color-chooser
+	conflicts = color-chooser
+	source = color-chooser-git::git+https://github.com/duongdominhchau/color-chooser
+	sha256sums = SKIP
+
+pkgname = color-chooser-git
+

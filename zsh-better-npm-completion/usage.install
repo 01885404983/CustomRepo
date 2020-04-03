@@ -1,0 +1,4 @@
+post_install() {
+    echo 'Add the line below to your zshrc'
+    echo 'source /usr/share/zsh-better-npm-completion/zsh-better-npm-completion.plugin.zsh'
+}

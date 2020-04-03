@@ -1,0 +1,35 @@
+# Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
+pkgname=gitea-docs-git
+pkgver=r9246.f685edf51
+pkgrel=1
+pkgdesc="Documentation for Gitea"
+arch=(any)
+url="https://github.com/go-gitea/gitea"
+license=('GPL')
+depends=()
+makedepends=(git hugo)
+provides=(${pkgname/-git/})
+conflicts=(${pkgname/-git/})
+source=("${pkgname}::git+https://github.com/go-gitea/gitea.git")
+sha256sums=(SKIP)
+
+pkgver() {
+    cd "${pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cd "${pkgname}/docs"
+    make
+    # Replace absolute paths and domain name to /usr/share/doc/gitea
+    find public -name '*.html' -exec \
+        sed -ie 's|href="/|href="/usr/share/doc/gitea/|g' {} \; \
+        -exec true -exec \
+        sed -ie 's|https://docs.gitea.io|file:///usr/share/doc/gitea|g' \;
+}
+
+package() {
+    cd "${pkgname}/docs"
+    mkdir -p "${pkgdir}/usr/share/doc"
+    cp -r public "${pkgdir}/usr/share/doc/gitea"
+}

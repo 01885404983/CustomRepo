@@ -1,0 +1,17 @@
+pkgbase = fuzzy-match
+	pkgdesc = Fuzzy string matching inspired by Sublime Text
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/forrestthewoods/lib_fts
+	arch = any
+	groups = chau
+	license = custom
+	source = https://raw.githubusercontent.com/forrestthewoods/lib_fts/master/code/fts_fuzzy_match.h
+	source = https://raw.githubusercontent.com/forrestthewoods/lib_fts/master/docs/fuzzy_match.md
+	source = https://raw.githubusercontent.com/forrestthewoods/lib_fts/master/readme.md
+	sha256sums = 1d6d15eaea05f2ad26bfaa36ad34dd231aab1e1ee69215768d58fcf0e673c8be
+	sha256sums = 9b26ccaf2137aeddad0060e76dc80e4119592f1fb5bcfc96816b556068938c2a
+	sha256sums = 5f33349872919b1a864245d5e6c2762cbf59b41763a9b783535652a110587d6e
+
+pkgname = fuzzy-match
+

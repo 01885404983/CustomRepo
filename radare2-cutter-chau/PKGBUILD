@@ -1,0 +1,52 @@
+# Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
+pkgbase=radare2-cutter-chau
+pkgname=(radare2-cutter-chau radare2-cutter-chau-doc)
+pkgver=1.10.2
+pkgrel=1
+url="https://github.com/radareorg/cutter"
+license=('GPL')
+arch=(x86_64)
+makedepends=(
+	cmake pkgconf
+	python-sphinx doxygen python-breathe python-recommonmark
+)
+source=("https://github.com/radareorg/cutter/archive/v${pkgver}.tar.gz")
+sha256sums=(SKIP)
+
+build() {
+	cd "cutter-$pkgver/src"
+	mkdir -p build
+	cmake -B build \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCUTTER_USE_BUNDLED_RADARE2=Off \
+		-DCUTTER_ENABLE_KSYNTAXHIGHLIGHTING=On \
+		-DCUTTER_ENABLE_GRAPHVIZ=On \
+		-DCUTTER_ENABLE_PYTHON=Off \
+		-DCUTTER_ENABLE_PYTHON_BINDINGS=Off
+	cmake --build build
+	cd "${srcdir}/cutter-$pkgver/docs"
+	make html
+}
+
+package_radare2-cutter-chau() {
+	pkgdesc="Free and Open Source Reverse Engineering Platform powered by radare2"
+	depends=(radare2 python qt5-base qt5-svg graphviz syntax-highlighting)
+	provides=(radare2-cutter)
+	conflicts=(radare2-cutter)
+	cd "cutter-$pkgver"
+	install -Dm755 "src/build/Cutter" "${pkgdir}/usr/bin/Cutter"
+	install -Dm644 "src/org.radare.Cutter.desktop" \
+		"${pkgdir}/usr/share/applications/org.radare.Cutter.desktop"
+	install -Dm644 src/img/cutter.svg \
+		"${pkgdir}/usr/share/icons/hicolor/scalable/apps/cutter.svg"
+	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/radare2-cutter/LICENSE"
+}
+
+package_radare2-cutter-chau-doc() {
+	pkgdesc="Documentation of radare2-cutter"
+	arch=(any)
+	cd "cutter-$pkgver/docs"
+	mkdir -p "${pkgdir}/usr/share/doc/radare2-cutter"
+	cp -r build/html/* "${pkgdir}/usr/share/doc/radare2-cutter"
+}

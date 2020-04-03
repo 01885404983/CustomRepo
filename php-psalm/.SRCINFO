@@ -1,0 +1,13 @@
+pkgbase = php-psalm
+	pkgdesc = A static analysis tool for finding errors in PHP applications
+	pkgver = 3.10.1
+	pkgrel = 1
+	url = https://github.com/vimeo/psalm
+	arch = any
+	license = MIT
+	depends = php
+	source = https://github.com/vimeo/psalm/releases/download/3.10.1/psalm.phar
+	sha256sums = SKIP
+
+pkgname = php-psalm
+

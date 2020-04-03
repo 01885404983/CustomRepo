@@ -1,0 +1,12 @@
+pkgbase = systemctl-hibernate
+	pkgdesc = Wrapper for systemctl hibernate
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	makedepends = gcc
+	source = hibernate.cpp
+	sha256sums = 23d40e8326e073901cebef0e1b14375d34a8a26a4be85e6c8bb8a12212db0eee
+
+pkgname = systemctl-hibernate
+

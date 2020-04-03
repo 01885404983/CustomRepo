@@ -1,0 +1,13 @@
+pkgbase = codeception
+	pkgdesc = Full-stack testing PHP framework
+	pkgver = 4.1.4
+	pkgrel = 1
+	url = https://codeception.com
+	arch = any
+	license = GPL
+	depends = php
+	source = https://codeception.com/codecept.phar
+	sha256sums = SKIP
+
+pkgname = codeception
+

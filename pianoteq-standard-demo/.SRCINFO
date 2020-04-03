@@ -1,0 +1,16 @@
+pkgbase = pianoteq-standard-demo
+	pkgdesc = Pianoteq is an award-winning virtual instrument
+	pkgver = 6
+	pkgrel = 1
+	url = https://www.modartt.com
+	arch = x86_64
+	license = custom
+	source = Pianoteq 6.zip
+	source = pianoteq-standard.png
+	source = pianoteq-standard.desktop
+	sha256sums = 1ff18bd598df14ae90fd4a352b1bb0e157cfe1d7e63fd89c8c1e19643307b249
+	sha256sums = e860b189a5c5ad999d86a6ef1a23aa6f57e772a4908acc64c14ed5ab78a6dee1
+	sha256sums = 543bd3aeb1da8688c0ea4774bf41ed0e16b3a51388c1a07219c30832ee43f80c
+
+pkgname = pianoteq-standard-demo
+

@@ -1,0 +1,23 @@
+pkgbase = conky-chau-git
+	pkgdesc = Lightweight system monitor for X
+	pkgver = r3516.b2a5a47a
+	pkgrel = 1
+	url = https://github.com/brndnmtthws/conky
+	arch = x86_64
+	license = BSD
+	license = GPL
+	makedepends = cmake
+	makedepends = man-db
+	makedepends = git
+	depends = glib2
+	depends = lua
+	depends = wireless_tools
+	depends = libxft
+	depends = libxnvctrl
+	conflicts = conky
+	conflicts = conky-chau
+	source = conky-chau-git::git+https://github.com/brndnmtthws/conky.git
+	sha256sums = SKIP
+
+pkgname = conky-chau-git
+

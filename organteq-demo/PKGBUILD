@@ -1,0 +1,26 @@
+# Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
+pkgname=organteq-demo
+pkgver=1
+pkgrel=1
+pkgdesc="Organteq: physically modelled pipe organs"
+arch=(any)
+url="https://www.modartt.com"
+license=('custom')
+source=("Organteq 1.zip" "organteq.png" "organteq.desktop")
+sha256sums=(
+	"856953787c419fe5aff9dd27c2745868f8b06ad5507086b885dc95a5e523337a"
+	"92bdc26a970a9681fba43f3c26f272d412910a0697b469946830152fa2eee54b"
+	"6e2fc747495a124ac9796a5da657a8b7173d5abec0db8de44b9d0f1edf397649"
+)
+
+package() {
+	install -Dm644 organteq.png ${pkgdir}/usr/share/icons/organteq.png
+	install -Dm644 organteq.desktop ${pkgdir}/usr/share/applications/organteq.desktop
+	cd "Organteq 1"
+	install -Dm644 Documentation/organteq-english.pdf ${pkgdir}/usr/share/doc/organteq/Manual.pdf
+	install -Dm644 Licence.rtf ${pkgdir}/usr/share/licenses/organteq/License.rtf
+	install -Dm755 "Organteq 1" ${pkgdir}/opt/organteq/organteq
+	install -Dm755 -t "${pkgdir}/opt/organteq/Organteq 1.lv2" "Organteq 1.lv2"/*
+	cd ${pkgdir}/opt/organteq
+	ln -s "Organteq 1.lv2/Organteq_1.so"
+}

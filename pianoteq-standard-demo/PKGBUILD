@@ -1,0 +1,27 @@
+# Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
+pkgname=pianoteq-standard-demo
+pkgver=6
+pkgrel=1
+pkgdesc="Pianoteq is an award-winning virtual instrument"
+arch=(x86_64)
+url="https://www.modartt.com"
+license=('custom')
+source=("Pianoteq 6.zip" "pianoteq-standard.png" "pianoteq-standard.desktop")
+sha256sums=(
+	"1ff18bd598df14ae90fd4a352b1bb0e157cfe1d7e63fd89c8c1e19643307b249"
+	"e860b189a5c5ad999d86a6ef1a23aa6f57e772a4908acc64c14ed5ab78a6dee1"
+	"543bd3aeb1da8688c0ea4774bf41ed0e16b3a51388c1a07219c30832ee43f80c"
+)
+
+package() {
+	install -Dm644 pianoteq-standard.png ${pkgdir}/usr/share/icons/pianoteq-standard.png
+	install -Dm644 pianoteq-standard.desktop ${pkgdir}/usr/share/applications/pianoteq-standard.desktop
+	cd "Pianoteq 6"
+	install -Dm644 Documentation/pianoteq-english.pdf ${pkgdir}/usr/share/doc/pianoteq-standard/Manual.pdf
+	install -Dm644 Licence.rtf ${pkgdir}/usr/share/licenses/pianoteq-standard/License.rtf
+	install -Dm755 "Pianoteq 6" ${pkgdir}/opt/pianoteq-standard/pianoteq
+	install -Dm755 -t "${pkgdir}/opt/pianoteq-standard/Pianoteq 6.lv2" "Pianoteq 6.lv2"/*
+	install -Dm755 -t "${pkgdir}/opt/pianoteq-standard/extra" extra/*
+	cd "${pkgdir}/opt/pianoteq-standard"
+	ln -s "Pianoteq 6.lv2/Pianoteq_6.so"
+}

@@ -1,0 +1,23 @@
+# Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
+pkgname=blight
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="Intel backlight controller using /sys/class/backlight/intel_backlight/brightness"
+arch=(any)
+license=('GPL')
+depends=(python)
+makedepends=(gcc)
+source=("blight.cpp" "blight.py")
+sha256sums=(
+	"52d63cfd7c335aa18fc98057532bd5564a80a662428e8bcf4035be79af433d6d"
+	"f67f0e2669915ba891b6ecc2d88ca5677be7553785d4fdd8ae06268cc6f1f16b")
+
+build()
+{
+	g++ blight.cpp -o blight
+}
+
+package() {
+	install -Dm4755 -t "$pkgdir/usr/bin" blight
+	install -Dm644 -t "$pkgdir/usr/bin" blight.py
+}

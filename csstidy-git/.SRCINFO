@@ -1,0 +1,13 @@
+pkgbase = csstidy-git
+	pkgdesc = CSSTidy is an open source CSS parser and optimizer
+	pkgver = r36.8fbef82
+	pkgrel = 1
+	url = https://github.com/csstidy-c/csstidy
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	source = csstidy-git::git+https://github.com/csstidy-c/csstidy
+	sha256sums = SKIP
+
+pkgname = csstidy-git
+

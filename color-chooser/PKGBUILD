@@ -1,0 +1,35 @@
+# Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
+pkgname=color-chooser-git
+pkgver=r1.2cdc63f
+pkgrel=1
+pkgdesc="A simple HSL color chooser"
+arch=(x86_64)
+url="https://github.com/duongdominhchau/color-chooser"
+license=('GPL')
+depends=(qt5-base)
+makedepends=(git cmake)
+provides=(${pkgname/-git/})
+conflicts=(${pkgname/-git/})
+source=("${pkgname}::git+https://github.com/duongdominhchau/color-chooser")
+sha256sums=(SKIP)
+
+pkgver() {
+    cd "${pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cd "${pkgname}"
+    cmake \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DBUILD_TESTING=Off \
+        .
+    make
+}
+
+package() {
+    cd "${pkgname}"
+    install -Dm644 color-chooser.desktop -t "${pkgdir}/usr/share/applications"
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/color-chooser"
+    install -Dm755 color_chooser "${pkgdir}/usr/bin/color-chooser"
+}

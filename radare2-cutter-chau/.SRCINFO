@@ -1,0 +1,30 @@
+pkgbase = radare2-cutter-chau
+	pkgver = 1.10.2
+	pkgrel = 1
+	url = https://github.com/radareorg/cutter
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = pkgconf
+	makedepends = python-sphinx
+	makedepends = doxygen
+	makedepends = python-breathe
+	makedepends = python-recommonmark
+	source = https://github.com/radareorg/cutter/archive/v1.10.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = radare2-cutter-chau
+	pkgdesc = Free and Open Source Reverse Engineering Platform powered by radare2
+	depends = radare2
+	depends = python
+	depends = qt5-base
+	depends = qt5-svg
+	depends = graphviz
+	depends = syntax-highlighting
+	provides = radare2-cutter
+	conflicts = radare2-cutter
+
+pkgname = radare2-cutter-chau-doc
+	pkgdesc = Documentation of radare2-cutter
+	arch = any
+

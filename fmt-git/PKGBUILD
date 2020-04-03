@@ -1,0 +1,39 @@
+# Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
+pkgname=fmt-git
+pkgver=r4080.c1ce6e01
+pkgrel=1
+pkgdesc="A modern formatting library"
+arch=(x86_64)
+url="https://github.com/fmtlib/fmt"
+license=('GPL')
+depends=()
+# Note: Need nodejs-less-plugin-clean-css (AUR) to have css in result doc
+makedepends=(git cmake python-virtualenv doxygen nodejs-less)
+provides=(${pkgname/-git/})
+conflicts=(${pkgname/-git/})
+source=("${pkgname}::git+https://github.com/fmtlib/fmt.git")
+sha256sums=(SKIP)
+
+pkgver() {
+    cd "${pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cd "${pkgname}"
+    mkdir -p build && cd build
+    cmake \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+        -DBUILD_SHARED_LIBS=1 \
+        -DFMT_TEST=Off \
+        ..
+    make
+    make doc
+}
+
+package() {
+    cd "${pkgname}"
+    cd build
+    make DESTDIR="${pkgdir}" install
+}

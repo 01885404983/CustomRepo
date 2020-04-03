@@ -1,0 +1,40 @@
+# Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
+pkgname=gnucash-chau-git
+pkgver=r22038.2329c1c50
+pkgrel=1
+pkgdesc="GnuCash double-entry accounting program"
+arch=(any)
+url="https://github.com/duongdominhchau/gnucash"
+license=('GPL')
+depends=(webkit2gtk gtk3 guile libxml2 libxslt zlib dconf)
+makedepends=(git cmake boost swig gmock)
+provides=(gnucash)
+conflicts=(gnucash)
+source=("${pkgname}::git+https://github.com/Gnucash/gnucash")
+sha256sums=(SKIP)
+
+pkgver() {
+    cd "${pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cd "${pkgname}"
+    mkdir -p build && cd build
+    cmake \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+        -DWITH_PYTHON=On \
+        -DWITH_AQBANKING=Off \
+        -DWITH_OFX=Off \
+        -DWITH_SQL=Off \
+        -DCOMPILE_GSCHEMAS=Off \
+        ..
+    make
+}
+
+package() {
+    cd "${pkgname}/build"
+    make DESTDIR="${pkgdir}" install
+    rm "${pkgdir}/usr/bin/gnucash-valgrind"
+}

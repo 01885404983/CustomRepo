@@ -1,0 +1,26 @@
+pkgbase = gnucash-chau-git
+	pkgdesc = GnuCash double-entry accounting program
+	pkgver = r22038.2329c1c50
+	pkgrel = 1
+	url = https://github.com/duongdominhchau/gnucash
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = swig
+	makedepends = gmock
+	depends = webkit2gtk
+	depends = gtk3
+	depends = guile
+	depends = libxml2
+	depends = libxslt
+	depends = zlib
+	depends = dconf
+	provides = gnucash
+	conflicts = gnucash
+	source = gnucash-chau-git::git+https://github.com/Gnucash/gnucash
+	sha256sums = SKIP
+
+pkgname = gnucash-chau-git
+

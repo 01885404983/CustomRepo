@@ -1,0 +1,27 @@
+pkgbase = ulauncher-git
+	pkgdesc = Application launcher for Linux
+	pkgver = r690.b2c42ad
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = python-distutils-extra
+	makedepends = yarn
+	makedepends = python-setuptools
+	depends = libappindicator-gtk3
+	depends = libkeybinder3
+	depends = gobject-introspection-runtime
+	depends = webkit2gtk
+	depends = python-dbus
+	depends = python-pyinotify
+	depends = python-cairo
+	depends = python-xdg
+	depends = python-levenshtein
+	depends = python-gobject
+	provides = ulauncher
+	conflicts = ulauncher
+	source = ulauncher-git::git+https://github.com/Ulauncher/Ulauncher.git
+	sha256sums = SKIP
+
+pkgname = ulauncher-git
+

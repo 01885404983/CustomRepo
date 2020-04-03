@@ -1,0 +1,19 @@
+pkgbase = fmt-git
+	pkgdesc = A modern formatting library
+	pkgver = r4080.c1ce6e01
+	pkgrel = 1
+	url = https://github.com/fmtlib/fmt
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = python-virtualenv
+	makedepends = doxygen
+	makedepends = nodejs-less
+	provides = fmt
+	conflicts = fmt
+	source = fmt-git::git+https://github.com/fmtlib/fmt.git
+	sha256sums = SKIP
+
+pkgname = fmt-git
+

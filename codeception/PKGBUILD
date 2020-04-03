@@ -1,0 +1,15 @@
+# Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
+pkgname=codeception
+pkgver=4.1.4
+pkgrel=1
+pkgdesc="Full-stack testing PHP framework"
+arch=(any)
+url="https://codeception.com"
+license=('GPL')
+depends=(php)
+source=('https://codeception.com/codecept.phar')
+sha256sums=('SKIP')
+
+package() {
+	install -Dm755 codecept.phar "${pkgdir}/usr/bin/codecept"
+}

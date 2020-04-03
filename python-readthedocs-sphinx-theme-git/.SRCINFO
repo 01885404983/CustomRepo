@@ -1,0 +1,15 @@
+pkgbase = python-readthedocs-sphinx-theme-git
+	pkgdesc = Sphinx theme for readthedocs.org
+	pkgver = r1082.e873694
+	pkgrel = 1
+	url = https://github.com/readthedocs/sphinx_rtd_theme
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python-sphinx
+	provides = python-readthedocs-sphinx-theme
+	source = python-readthedocs-sphinx-theme-git::git+https://github.com/readthedocs/sphinx_rtd_theme
+	sha256sums = SKIP
+
+pkgname = python-readthedocs-sphinx-theme-git
+

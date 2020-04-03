@@ -1,0 +1,22 @@
+# Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
+pkgname=fuzzy-match
+pkgver=0.2.0
+pkgrel=1
+pkgdesc="Fuzzy string matching inspired by Sublime Text"
+arch=(any)
+url="https://github.com/forrestthewoods/lib_fts"
+license=('custom')
+groups=(chau)
+source=("https://raw.githubusercontent.com/forrestthewoods/lib_fts/master/code/fts_fuzzy_match.h"
+		"https://raw.githubusercontent.com/forrestthewoods/lib_fts/master/docs/fuzzy_match.md"
+        "https://raw.githubusercontent.com/forrestthewoods/lib_fts/master/readme.md")
+sha256sums=('1d6d15eaea05f2ad26bfaa36ad34dd231aab1e1ee69215768d58fcf0e673c8be'
+            '9b26ccaf2137aeddad0060e76dc80e4119592f1fb5bcfc96816b556068938c2a'
+			'5f33349872919b1a864245d5e6c2762cbf59b41763a9b783535652a110587d6e')
+
+package() {
+	install -Dm644 fts_fuzzy_match.h "${pkgdir}/usr/include/fts_fuzzy_match.h"
+    install -Dm644 fuzzy_match.md "${pkgdir}/usr/share/doc/fuzzy-match/fuzzy_match.md"
+	grep --after 3 'What license' readme.md > LICENSE
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}

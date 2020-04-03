@@ -1,0 +1,19 @@
+pkgbase = radare2-chau
+	pkgdesc = UNIX-like reverse engineering framework and command-line toolset
+	pkgver = 4.3.1
+	pkgrel = 1
+	url = https://github.com/radareorg/radare2
+	arch = x86_64
+	license = GPL
+	depends = capstone
+	depends = openssl
+	depends = xxhash
+	depends = libzip
+	depends = zlib
+	provides = radare2
+	conflicts = radare2
+	source = https://github.com/radareorg/radare2/archive/4.3.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = radare2-chau
+
