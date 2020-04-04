@@ -1,6 +1,6 @@
 #!/bin/zsh
 REPO_NAME=chau-custom
-REPO_PATH=/chau
+REPO_PATH=/home/chau/Resources/ChauRepo
 
 build_packages() {
     for package in *
@@ -21,9 +21,10 @@ build_packages() {
 }
 
 create_repo() {
-    rm -rf ${REPO_PATH}/*
-    cp */*.pkg.tar.* ${REPO_PATH}
-    repo-add ${REPO_PATH}/${REPO_NAME}.db.tar.xz ${REPO_PATH}/*.pkg.tar.*
+    rm -rf "${REPO_PATH}"
+    mkdir "${REPO_PATH}"
+    cp */*.pkg.tar.* "${REPO_PATH}"
+    repo-add "${REPO_PATH}/${REPO_NAME}.db.tar.zst" "${REPO_PATH}"/*.pkg.tar.*
     cd -
 }
 

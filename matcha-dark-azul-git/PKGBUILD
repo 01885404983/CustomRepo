@@ -1,6 +1,6 @@
 # Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
 pkgname=matcha-dark-azul-git
-pkgver=r272.92974ac
+pkgver=r274.edfcaa7
 pkgrel=1
 pkgdesc="Matcha flat design theme for GTK"
 arch=(any)

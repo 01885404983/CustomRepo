@@ -1,6 +1,6 @@
 # Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
 pkgname=php-doc-git
-pkgver=r25706.cd10685d87
+pkgver=r25707.552d72de63
 pkgrel=1
 pkgdesc="Documention for PHP programming language"
 arch=(any)

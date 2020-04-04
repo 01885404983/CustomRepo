@@ -1,6 +1,6 @@
 # Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
 pkgname=phpunit-doc-git
-pkgver=r2211.aa08446a
+pkgver=r2214.49364797
 pkgrel=1
 pkgdesc="Documentation for PHPUnit"
 arch=(any)
