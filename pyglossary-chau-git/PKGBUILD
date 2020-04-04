@@ -1,0 +1,24 @@
+# Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
+pkgname=pyglossary-chau-git
+pkgver=r1030.001c88c
+pkgrel=1
+pkgdesc="A tool for converting dictionary files aka glossaries with various formats for different dictionary applications"
+arch=(any)
+url="https://github.com/duongdominhchau/pyglossary"
+license=('GPL')
+depends=(python)
+makedepends=(git)
+provides=(pyglossary)
+conflicts=(pyglossary)
+source=("${pkgname}::git+https://github.com/duongdominhchau/pyglossary")
+sha256sums=(SKIP)
+
+pkgver() {
+	cd "${pkgname}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+	cd "${pkgname}"
+    python setup.py install --root="${pkgdir}" --prefix=/usr --optimize=1
+}
