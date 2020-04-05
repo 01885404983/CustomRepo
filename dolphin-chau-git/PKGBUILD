@@ -1,6 +1,6 @@
 # Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
 pkgname=dolphin-chau-git
-pkgver=r6061.164c1c0c4
+pkgver=r6056.e4fe7197b
 pkgrel=1
 pkgdesc="Dolphin - The KDE file manager"
 arch=(x86_64)

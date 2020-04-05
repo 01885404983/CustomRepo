@@ -1,6 +1,6 @@
 # Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
 pkgname=fmt-git
-pkgver=r4084.9eb47d95
+pkgver=r4087.d151562b
 pkgrel=1
 pkgdesc="A modern formatting library"
 arch=(x86_64)

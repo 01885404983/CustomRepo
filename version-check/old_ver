@@ -4,8 +4,8 @@ conky 20200307.155416
 conky-git-chau 20200307.155416
 csstidy 20181223.002928
 doctest 2.3.7
-dolphin 20200330.135007
-fmt 20200403.154929
+dolphin 20200331.133533
+fmt 20200404.194956
 gnucash 20200401.153630
 goldendict 20200327.100852
 laravel-doc v1.1.5
@@ -14,13 +14,13 @@ matcha 20200311.115438
 matcha-dark-azul 20200403.162640
 nvimpager 20191124.102555
 phalcon-devtools 20200112.210250
-php-doc 20200403.211503
+php-doc 20200405.012237
 php-doc-git 20200214.103515
 php-phd RELEASE_1_1_11
 php-psalm 3.10.1
 phpunit-doc 20200404.071258
 pyglossary 20200318.113042
-python-readthedocs-sphinx-theme 20200326.213901
+python-readthedocs-sphinx-theme 20200404.214858
 radare2 4.3.1
 radare2-chau 4.3.1
 radare2-cutter v1.10.2

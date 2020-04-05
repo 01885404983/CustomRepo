@@ -1,6 +1,6 @@
 # Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
 pkgname=python-readthedocs-sphinx-theme-git
-pkgver=r1082.e873694
+pkgver=r1083.fd6f31f
 pkgrel=1
 pkgdesc="Sphinx theme for readthedocs.org"
 arch=(any)
